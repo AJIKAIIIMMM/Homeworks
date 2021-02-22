@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-// Задание №1
+// Task в„–1
   int a = 10;
   char b = 'B';
   long c = 15;
@@ -14,7 +14,7 @@ int main() {
 
   std::cout << a << " " <<  b << " " << c << " " << d <<
    " " << e << " " << f << " " << g << std::endl;
-//Задание №2,3
+//Task в„–2,3
   enum GameCN {X = 88, O = 79, BLANK = 22};
   int SignX = X;
   int SignO = O;
@@ -23,13 +23,13 @@ int main() {
   for (int i = 0; i < 3; ++i) {
             cout << MassForGame[i] << " ";
         }cout << endl;
-//Задание №4
+//Task в„–4
   struct areaforplaying {
   char Cross;
   char Zero;
   char space;
   } area [3]{88, 79, 22};
-// Задание №5
+//Task в„–5
   struct areaforplaying1 {
         union Crosses{
           char Cross1:1;
