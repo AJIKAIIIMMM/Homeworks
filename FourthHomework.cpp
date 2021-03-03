@@ -64,7 +64,10 @@ int main() {
                 case 4:{
                     int i;
                     for (int i = 0; i <= 2021; i++) {
-                        if (i % 4 == 0 || i % 400 == 0){
+                        if (i % 4 == 0 && i % 100 != 0){
+                            std::cout << i << " ";
+                        }
+                        if (i % 400 == 0){
                             std::cout << i << " ";
                         }
                     }
@@ -77,4 +80,3 @@ int main() {
     }
 
     return 0;
-}
