@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -30,13 +31,13 @@ public:
     Card(suit a, Rank b, bool CardsPos = 0)
     :SuitsField(a), CardsRank(b), CardsPos(CardsPos)
     {}
-    void Flip(bool Pos){
-        if(Pos == 0){
-            Pos = 1;
+    void Flip(){
+        if(CardsPos == 0){
+            CardsPos = 1;
             std::cout << "The card was fliped" << std::endl;
         }else std::cout << "There is nothing to flip" << std::endl;
     }
-    Rank GetValue()const {while(ACE == 1) return CardsRank;}
+    Rank GetValue()const {return CardsRank;}
 };
 
 class Hand{
@@ -51,9 +52,10 @@ public:
 
     void Clear(){
         m_inHand.clear();
+        m_inHand.shrink_to_fit();
     }
 
-    Hand GetValue()const{
+    int GetValue()const{
         auto iter = m_inHand.begin();
         int sum = 0;
         while(iter != m_inHand.end()){
@@ -67,6 +69,26 @@ public:
                 sum -= 10;
             }
         }
+        return sum;}
+    virtual void IsHitting(){
+        char c;
+        cout << "Do you need another one card? y/n";
+        cin >> c;
+        while(c == 'y') /*вызов функции с рандомайзером и добавление карты в функцию Add*/;
+    }
+};
+
+class GenericPlayer:public Hand{
+    string m_name;
+public:
+    GenericPlayer(vector<Card*> inHand, string name)
+    :Hand (inHand), m_name(name)
+    {}
+    bool IsBoosted(){
+        if(GetValue() > 21) return 1;
+        else return 0;}
+    void Bust(){
+        if(IsBoosted() == true) cout << "The hand of " << m_name << "is overflowed" << endl;
     }
 };
 
