@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ostream &endll(ostream &stream){
+istream &endll(istream &stream){
     cout << '\n';
     cout << '\n';
     fflush (stdin);
